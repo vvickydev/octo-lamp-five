@@ -24,6 +24,31 @@ window.addEventListener("DOMContentLoaded", () => {
   start.addEventListener("click", function (e) {
     document.querySelector("#quizBlock").style.display = "block";
     start.style.display = "none";
+    // add a timer for 60 seconds
+    let timeLeft = 61;
+    const timeDisplay = document.getElementById("time");
+
+    const timer = setInterval(displayTime, 1000);
+
+    function displayTime() {
+      timeLeft--;
+      // format the time to display as 01:00 ...
+      let timeString =
+        timeLeft < 10
+          ? `00:0${timeLeft}`
+          : timeLeft < 60
+          ? `00:${timeLeft}`
+          : "01:00";
+      // set HTML
+      timeDisplay.innerHTML = timeString;
+
+      // when timer reaches 0, stop the timer, calculate score and display the mdoal
+      if (timeLeft == 0) {
+        clearInterval(timer);
+        calculateScore();
+        $("#scoreModal").modal();
+      }
+    }
   });
   // quizArray QUESTIONS & ANSWERS
   // q = QUESTION, o = OPTIONS, a = CORRECT ANSWER
@@ -125,32 +150,6 @@ window.addEventListener("DOMContentLoaded", () => {
   btnSubmit.addEventListener("click", () => {
     calculateScore();
   });
-
-  // add a timer for 60 seconds
-  let timeLeft = 61;
-  const timeDisplay = document.getElementById("time");
-
-  const timer = setInterval(displayTime, 1000);
-
-  function displayTime() {
-    timeLeft--;
-    // format the time to display as 01:00 ...
-    let timeString =
-      timeLeft < 10
-        ? `00:0${timeLeft}`
-        : timeLeft < 60
-        ? `00:${timeLeft}`
-        : "01:00";
-    // set HTML
-    timeDisplay.innerHTML = timeString;
-
-    // when timer reaches 0, stop the timer, calculate score and display the mdoal
-    if (timeLeft == 0) {
-      clearInterval(timer);
-      calculateScore();
-      $("#scoreModal").modal();
-    }
-  }
 
   // call the displayQuiz function
   displayQuiz();
