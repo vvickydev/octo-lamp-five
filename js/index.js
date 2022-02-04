@@ -129,6 +129,8 @@ window.addEventListener("DOMContentLoaded", () => {
           // if the radio element is checked, is it the correct answer?
           if (r == ans) {
             score++;
+          } else {
+            liElement.style.border = "solid red";
           }
         }
       }
