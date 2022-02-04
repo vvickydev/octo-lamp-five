@@ -110,7 +110,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const displayScore = (score) => {
     let modalBody = document.getElementById("modalBody");
     console.log(modalBody);
-    let scoreContent = `You score is ${score}!`;
+    let scoreContent = `Your score is ${score}!`;
     modalBody.innerHTML = scoreContent;
   };
 
