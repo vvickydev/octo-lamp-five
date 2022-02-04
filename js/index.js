@@ -21,9 +21,11 @@
 
 window.addEventListener("DOMContentLoaded", () => {
   const start = document.querySelector("#start");
+  const btnStart = document.getElementById("btnStart");
+  console.log(btnStart);
   let timer;
   let count = 0;
-  start.addEventListener("click", function (e) {
+  btnStart.addEventListener("click", function (e) {
     document.querySelector("#quizBlock").style.display = "block";
     start.style.display = "none";
     // add a timer for 60 seconds
@@ -131,6 +133,10 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
+    let radioBtn = document.querySelectorAll('input[type="radio"]');
+    for (let i = 0; i < radioBtn.length; i++) {
+      radioBtn[i].disabled = true;
+    }
     displayScore(score);
   };
 
@@ -138,9 +144,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const displayScore = (score) => {
     let modalBody = document.getElementById("modalBody");
     console.log(modalBody);
-    let scoreContent = `Your score is ${score}!`;
-    let timeTaken = `Time taken was ${count} seconds!`;
-    modalBody.innerHTML = scoreContent + "\n" + timeTaken;
+    let scoreContent = `Your score is ${score}`;
+    let timeTaken = `Time taken was ${count} seconds`;
+    modalBody.innerHTML = `${scoreContent}  <br>${timeTaken}`;
   };
 
   // reload the page

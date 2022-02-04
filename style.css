@@ -10,3 +10,12 @@
   align-content: center;
   display: flex;
 }
+
+#btnContainer {
+  margin-bottom: 20px;
+}
+
+.mb-5 {
+  margin-top: 10px;
+  text-align: center;
+}
