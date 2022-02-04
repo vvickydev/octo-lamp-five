@@ -23,8 +23,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const start = document.querySelector("#start");
   const btnStart = document.getElementById("btnStart");
   console.log(btnStart);
+  // timer to be used to store setInterval function
   let timer;
+  // count counts how much time is taken
   let count = 0;
+
   btnStart.addEventListener("click", function (e) {
     document.querySelector("#quizBlock").style.display = "block";
     start.style.display = "none";
@@ -32,9 +35,11 @@ window.addEventListener("DOMContentLoaded", () => {
     let timeLeft = 60;
     const timeDisplay = document.getElementById("time");
 
+    // setInterval will call function displayTime every 1000ms (1 second)
     timer = setInterval(displayTime, 1000);
 
     function displayTime() {
+      // increment and decrement for display later
       timeLeft--;
       count++;
       // format the time to display as 01:00 ...
@@ -47,7 +52,7 @@ window.addEventListener("DOMContentLoaded", () => {
       // set HTML
       timeDisplay.innerHTML = timeString;
 
-      // when timer reaches 0, stop the timer, calculate score and display the mdoal
+      // when timer reaches 0, stop the timer, calculate score and display the modal
       if (timeLeft == 0) {
         clearInterval(timer);
         calculateScore();
