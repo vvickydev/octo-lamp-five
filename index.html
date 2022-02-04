@@ -20,9 +20,9 @@
     <div class="container m-5" id="start">
       <div class="card" style="width: 18rem">
         <div class="card-body">
-          <h5 class="card-title">Test your knowledge</h5>
-          <p class="card-text">Some quick description about the quiz .</p>
-          <a class="btn btn-primary">Start</a>
+          <h5 class="card-title">Are you up for a fun challenge?</h5>
+          <p class="card-text">This is a short general knowledge quiz!</p>
+          <a class="btn btn-primary">Click here to start</a>
         </div>
       </div>
     </div>
@@ -31,18 +31,62 @@
     <div class="container" id="quizBlock" style="display: none">
       <div class="mb-5">
         <h2>Test your knowledge</h2>
-        - Time remaining <span id="time">01:00</span>
+        Time remaining <span id="time">01:00</span>
       </div>
       <div id="quizWrap"></div>
 
       <div>
-        <button type="button" class="btn btn-primary" id="btnSubmit">
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="btnSubmit"
+          data-toggle="modal"
+          data-target="#scoreModal"
+        >
           Submit Quiz
         </button>
         <button type="button" class="btn btn-primary" id="btnReset">
           Reset Quiz
         </button>
         <span id="score"></span>
+      </div>
+    </div>
+
+    <!-- Adding a modal to display score -->
+    <div
+      class="modal fade"
+      id="scoreModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="scoreModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Thanks for playing!
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modalBody"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
