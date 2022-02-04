@@ -21,17 +21,20 @@
 
 window.addEventListener("DOMContentLoaded", () => {
   const start = document.querySelector("#start");
+  let timer;
+  let count = 0;
   start.addEventListener("click", function (e) {
     document.querySelector("#quizBlock").style.display = "block";
     start.style.display = "none";
     // add a timer for 60 seconds
-    let timeLeft = 61;
+    let timeLeft = 60;
     const timeDisplay = document.getElementById("time");
 
-    const timer = setInterval(displayTime, 1000);
+    timer = setInterval(displayTime, 1000);
 
     function displayTime() {
       timeLeft--;
+      count++;
       // format the time to display as 01:00 ...
       let timeString =
         timeLeft < 10
@@ -136,7 +139,8 @@ window.addEventListener("DOMContentLoaded", () => {
     let modalBody = document.getElementById("modalBody");
     console.log(modalBody);
     let scoreContent = `Your score is ${score}!`;
-    modalBody.innerHTML = scoreContent;
+    let timeTaken = `Time taken was ${count} seconds!`;
+    modalBody.innerHTML = scoreContent + "\n" + timeTaken;
   };
 
   // reload the page
@@ -149,6 +153,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const btnSubmit = document.querySelector("#btnSubmit");
   btnSubmit.addEventListener("click", () => {
     calculateScore();
+    clearInterval(timer);
   });
 
   // call the displayQuiz function
